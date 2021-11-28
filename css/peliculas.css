@@ -1,0 +1,74 @@
+/* --------------------------- *\
+	SECCION DE PELICULAS
+\* --------------------------- */
+
+#seccion-peliculas {
+    overflow: auto;
+    padding: 0 var(--espaciado-leve);
+    background-color: black;
+}
+
+    .peliculas-subtitulo {
+        color: var(--color-gray);
+        font-size: 0.8em;
+        font-weight: 300;
+    }
+
+    .peliculas-titulo {
+        margin-top: 0;
+        margin-bottom: var(--espaciado-leve);
+
+        font-size: 1.2em;
+        font-weight: 500;
+        color:white;
+        padding: 20px 0px;
+        text-transform: uppercase;
+        margin-left:10px
+    }
+
+    .peliculas-container {
+        height: min-content;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        margin-bottom: var(--espaciado-leve);
+
+        display: flex;
+    }
+    .peliculas-containerEstrenos {
+        height: min-content;
+        /* verflow-x: scroll;o */
+        /* overflow-y: hidden; */
+            /* margin-bottom: var(--espaciado-leve); */
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .pelicula {
+            margin: 15px;
+            margin-right: var(--espaciado-leve);
+            cursor: pointer;
+
+        }
+        .pelicula:hover {
+            -webkit-transform:scale(1.3);transform:scale(1.3);
+            margin:5px;
+            
+        }
+
+            .pelicula img {
+                width: calc(var(--espaciado-muy-alto)*4);
+                animation: fade-in 1s;
+                overflow:hidden;
+                
+            }
+            
+
+            .pelicula figcaption {
+                color: white;
+                font-size: 0.9em;
+                margin-top: var(--espaciado-muy-leve);
+                text-align: center;
+                padding: 5px;
+                width: 150px;
+            }

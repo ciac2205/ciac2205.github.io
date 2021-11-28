@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Movies Ciac</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./icon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./icon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./icon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./icon/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./icon/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./icon/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./icon/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./icon/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./icon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <meta name="theme-color" content="#ff0000" />
+    <script src="./app.js" defer></script>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "fdf6cbe7-224c-448f-82bc-112008601f94",
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header id="header">
+        <a class="header-menu-button" id="menu-button"><img src="./assets/menu.png" /></a>
+        <a href="./index.html"><img class="header-imagen-titulo" src="./assets/logo.png" alt="ciac-pelis" /></a>
+
+        <form class="header-formulario" id="formulario" action="">
+            <input type="text" name="pelicula" placeholder="Busca una Pelicula" />
+    
+        </form>
+        <!-- HTML !-->
+        <button class="button-56" role="button" id="btnAdd">
+            Instala nuestra APP
+        </button>
+
+    
+    </header>
+
+    <!-- Seccion Menu -->
+    <section id="seccion-menu">
+        <div class="menu-container">
+            <a href="./index.html">
+                <img class="menu-imagen-titulo" src="./assets/logo.png" alt="ciac-pelis" />
+            </a>
+            <nav class="menu-navbar">
+                <h2 class="navbar-titulo">
+                    <a href="./estrenos.html"><i class="fa fa-film" aria-hidden="true"></i> Estrenos
+                    </a>
+                </h2>
+                <ol class="navbar-lista peliculas-recientes" id="lista-peliculas-recientes"></ol>
+                <h2 class="navbar-titulo">
+                    <a href="./todo.html"><i class="fa fa-television" aria-hidden="true"></i> Acción</a>
+                </h2>
+             
+                <button class="button-56" role="button" id="btnNotificacion">
+                    Notificación
+                </button>
+                <!-- Plantilla con la Lista de Peliculas Recientes -->
+            </nav>
+            
+        </div>
+    </section>
+
+    <!-- Seccion Peliculas -->
+    <section id="seccion-peliculas">
+        <h2 class="peliculas-titulo">Animación</h2>
+        <div id="peliculas-animacion" class="peliculas-container"></div>
+
+        <h2 class="peliculas-titulo">Acción</h2>
+        <div id="peliculas-accion" class="peliculas-container"></div>
+
+        <h2 class="peliculas-titulo">Drama</h2>
+        <div id="peliculas-drama" class="peliculas-container"></div>
+        <h2 class="peliculas-titulo">Comedy</h2>
+        <div class="peliculas-container" id="peliculas-comedy"></div>
+
+        <h2 class="peliculas-titulo">Documentary</h2>
+        <div id="peliculas-documentary" class="peliculas-container"></div>
+        <h2 class="peliculas-titulo">Crime</h2>
+        <div id="peliculas-crime" class="peliculas-container"></div>
+    </section>
+
+    <!-- Seccion Busqueda -->
+    <section id="seccion-busqueda">
+        <!-- Plantilla con los datos de una pelicula buscada -->
+    </section>
+
+    <!-- Modal -->
+    <section id="modal">
+        <!-- Plantilla con los datos de una pelicula seleccionada -->
+    </section>
+    <script src="./index.js"></script>
+    <script>
+        var deferredPrompt;
+        window.addEventListener("beforeinstallprompt", function (e) {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+        btnAdd = document.getElementById("btnAdd");
+        btnAdd.addEventListener("click", (e) => {
+            deferredPrompt.prompt();
+
+            deferredPrompt.prompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === "accepted") {
+                    console.log("Instalado");
+                    btnAdd.style.display = "none";
+                } else {
+                    console.log("No la instalo");
+                }
+                deferredPrompt = null;
+            });
+        });
+    </script>
+    <script>
+        var button = document.getElementById("btnNotificacion");
+        button.addEventListener("click", function (e) {
+            Notification.requestPermission().then(function (result) {
+                if (result === "granted") {
+                    randomNotification();
+                }
+            });
+        });
+
+        function randomNotification() {
+            var notifTitle = " Notificacion PWA Pelis";
+            var notifBody = "Te invitamos a ver nuestras nuevas secciones";
+            var notifImg = "/assets/logo.png";
+            var options = {
+                body: notifBody,
+                icon: notifImg,
+            };
+            var notif = new Notification(notifTitle, options);
+            setTimeout(randomNotification, 30000);
+        }
+    </script>
+</body>
+
+</html>

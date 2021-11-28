@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Movies Ciac</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./icon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./icon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./icon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./icon/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./icon/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./icon/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./icon/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./icon/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icon/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./icon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png" />
+    <!-- <link rel="manifest" href="./manifest.webmanifest"> -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <meta name="theme-color" content="#ff0000">
+    <script src="./app.js" defer ></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header id="header">
+        <a class="header-menu-button" id="menu-button"><img src="./assets/menu.png"></a> 
+       <a href="./index.html"><img class="header-imagen-titulo" src="./assets/logo.png" alt="ciac-pelis"></a> 
+
+        <form class="header-formulario" id="formulario" action="">
+            <input type="text" name="pelicula" placeholder="Busca una Pelicula">
+            <!-- Plantilla con Imagen de Loading -->
+            </form>
+           
+     
+    </header>
+
+
+    <!-- Seccion Menu -->
+    <section id="seccion-menu">
+        <div class="menu-container">
+            <a href="./index.html">
+                <img class="menu-imagen-titulo" src="./assets/logo.png" alt="ciac-pelis">
+                </a>
+            <nav class="menu-navbar">
+
+                <h2 class="navbar-titulo"><a href="./estrenos.html">Estrenos</a></h2>
+       
+                </ol>
+                <h2 class="navbar-titulo"><a href="./todo.html">Acción</a></h2>
+               
+            </nav>
+            
+           
+        </div>
+
+        <div class="menu-capa" id="menu-capa"></div>
+    </section>
+
+    <!-- Seccion Peliculas -->
+    <section id="seccion-peliculas">
+
+        <h2 class="peliculas-titulo">Estrenos</h2>
+        <div class="peliculas-containerEstrenos" id="lista-peliculas-recientes">
+          
+
+        </div>
+      
+    </section>
+
+
+    <!-- Modal -->
+    <section id="modal">
+        <!-- Plantilla con los datos de una pelicula seleccionada -->
+    </section>
+    <script src="./index.js"></script>
+   
+</body>
+</html>
