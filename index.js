@@ -1,12 +1,9 @@
-/* ------------------ */
-/* VARIABLES GLOBALES */
-/* ------------------ */
 
-// Servicios Externos
+
 const API_USUARIOS = `https://randomuser.me/api/?inc=name,picture&results=`;
 const API_PELICULAS = "https://yts.mx/api/v2/list_movies.json";
 
-// Contenedores
+
 const $navbar = document.getElementById('header');
 const $listaAmigos = document.getElementById('lista-amigos');
 const $listaPeliculasRecientes = document.getElementById('lista-peliculas-recientes');
@@ -20,17 +17,15 @@ const $peliculasAnimation = document.getElementById('peliculas-animacion');
 const $seccionBusqueda = document.getElementById('seccion-busqueda');
 const $modal = document.getElementById('modal');
 
-/* ------------------------------------------------------------------------- */
-/* TRABAJAMOS CON EL FORMULARIO DE BUSQUEDA, EL API Y LA SECCION DE BUSQUEDA */
-/* ------------------------------------------------------------------------- */
+
 
 const $formularioBusqueda = document.getElementById('formulario');
 
 $formularioBusqueda.addEventListener("submit", async (event) => {
-    // Evita el recargo de la pagina
+
     event.preventDefault()
 
-    // Oculta el teclado cuando estamos en dispositivos moviles
+
     const inputOculto = document.createElement('input');
     inputOculto.setAttribute('type', 'text');
     document.body.appendChild(inputOculto);
@@ -38,7 +33,6 @@ $formularioBusqueda.addEventListener("submit", async (event) => {
     inputOculto.focus();
     setTimeout(() => inputOculto.remove(), 1)
 
-    // Obtiene el valor del input e intenta la busqueda mediante el API
     const formData = new FormData($formularioBusqueda);
     const inputBusqueda = formData.get("pelicula");
 
@@ -55,9 +49,6 @@ $formularioBusqueda.addEventListener("submit", async (event) => {
     }
 });
 
-/* --------------------------------------------------------------------------------------- */
-/* TRABAJAMOS CON PETICIONES AL API Y CON LOS RESULTADOS CREAMOS DIFERENTES ELEMENTOS HTML */
-/* --------------------------------------------------------------------------------------- */
 
 (async function cargar_datos() {
   
@@ -248,10 +239,6 @@ function cerrarModal(event) {
     $modal.children[0].remove()
 }
 
-/* ---------------------------------------------------------------------------------------------------- */
-/* TRABAJAMOS CON EL BOTON MENU DEL HEADER PARA MOSTRAR LA SECCION MENU EN RESOLUCIONES MENORES A 800px */
-/* ---------------------------------------------------------------------------------------------------- */
-
 (function menuResponsive() {
     const $seccionMenu = document.getElementById('seccion-menu')
     
@@ -261,9 +248,6 @@ function cerrarModal(event) {
     $capaMenu.addEventListener('click', () => $seccionMenu.classList.remove('activo'))
 })();
 
-/* ---------------------------------------------------------------------------------------- */
-/* TRABAJAMOS CON EL BODY Y OBTENEMOS SU VH REAL DEBIDO A PROBLEMAS CON NAVEGADORES MOVILES */
-/* ---------------------------------------------------------------------------------------- */
 
 function calcularViewportHeight() {
     const viewportHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
